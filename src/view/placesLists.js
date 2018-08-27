@@ -1,10 +1,10 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as FW from '@fortawesome/free-solid-svg-icons';
 import {Map} from 'google-maps-react';
 import StarRatingComponent from 'react-star-rating-component';
+import { EventHandler } from '../actions/EventHandler';
 
 export const placesListsView = actions => {
+  EventHandler.subscribe('searchNearby', actions.searchNearby);
   return model => (
     <div className="PlacesLists">
       <Map
@@ -14,30 +14,39 @@ export const placesListsView = actions => {
           onReady={actions.onMapReady}
           visible={false} >
       </Map>
-      {console.log(model)}
-      {(model) ? Object.keys(model).map((placeID, index) => 
-        <article className="PlaceBox" key={index}>
-        <div className="PlaceBox__Left">
-          <figure className="image">
-            <img src={model[placeID].icon} alt="" />
-          </figure>
-        </div>
-        <div className="PlaceBox__Content">
-          <p className="PlaceBox__Title">{model[placeID].name}</p>
-          <p className="PlaceBox__Address">{model[placeID].vicinity}</p>
-          <p className="PlaceBox__Dist">
-            <StarRatingComponent 
-              name={model[placeID].id} 
-              editing={false}
-              starCount={5}
-              value={model[placeID].rating}
-            />
-
-            Open > {model[placeID].opening_hours.open_now ? 'Open' : 'Closed'}
-          </p>
-        </div>
-      </article>
-      ): 'loading...'}
+      {
+        (model.status) ?
+          <article className="PlaceBox">
+            <div>{model.status}</div>
+          </article>
+          :
+          (model) ? Object.keys(model).map((placeID, index) => 
+            <article className="PlaceBox" key={index}>
+              <div className="PlaceBoxWarp">
+                <div className="PlaceBox__Left">
+                  <figure className="image">
+                    <img src={model[placeID].icon} alt="" />
+                  </figure>
+                </div>
+                <div className="PlaceBox__Content">
+                  <p className="PlaceBox__Title">{model[placeID].name}</p>
+                  <p className="PlaceBox__Address">{model[placeID].vicinity}</p>
+                </div>
+              </div>
+              <div className="PlaceBox__Footer">
+                  <div className="PlaceBox__FooterText">
+                    {model[placeID].opening_hours && model[placeID].opening_hours.open_now ? 'Open right now' : 'Closed'}
+                </div>
+                <StarRatingComponent 
+                    name={model[placeID].id} 
+                    editing={false}
+                    starCount={5}
+                    value={model[placeID].rating}
+                  />
+              </div>
+            </article>
+          ): 'loading...'
+      }
     </div>
   )
 };

@@ -34,7 +34,8 @@ export const createModel = update => {
 
     onMapReady: ( { mapProps, map } ) => {
       getLocation().then( ( { coords: {latitude, longitude} } ) => {
-        acceptors.searchNearby(mapProps, map, latitude, longitude)('atm');
+        acceptors.searchNearby = acceptors.searchNearby(mapProps, map, latitude, longitude);
+        acceptors.searchNearby(['atm']);
       });
     },
 
@@ -52,11 +53,25 @@ export const createModel = update => {
       const service = new google.maps.places.PlacesService(map);
   
       service.nearbySearch(request, (results, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK)
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
           update(model => {
             model = results;
             return model;
           });
+        }else{
+          update(model => {
+            model = {status};
+            return model;
+          });
+        }
+      });
+    },
+
+    activeLeftLink: name => {
+      update(model => {
+        Object.keys(model).map(type => model[type].isActive = model[type].isActive ? false : false);
+        model[name].isActive = true;
+        return model;
       });
     }
 
