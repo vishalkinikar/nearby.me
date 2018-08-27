@@ -1,1 +1,1 @@
-# nearby.me
+# nearme-places

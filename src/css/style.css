@@ -1,0 +1,259 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+	display: block;
+}
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+  display: none;
+}
+
+*, :after, :before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Arial,sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  font-size: 14px;
+  color: #72777a;
+  letter-spacing: .2px;
+  overflow-x: hidden;
+  margin: 0;
+  font-weight: 400;
+  text-align: left;
+  background-color: #eeeeee;
+}
+
+body, html, html a {
+  -webkit-font-smoothing: antialiased;
+}
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.mainDiv {
+  padding: 0;
+  margin: 0;
+}
+
+.Header {
+  width: 100%;
+  background-color: #fff;
+  height: 58px;
+  box-shadow: #e0e4e8 0px 0px 0px 0px inset, rgba(50, 54, 78, 0.25) 0px 1px 6px 0px;
+  position: fixed;
+  top: 0px;
+  z-index: 9;
+  padding: 12px 16px;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.Header__Title {
+  font-size: 20px;
+  color: #272727;
+  font-weight: 600;
+}
+
+.Header__UserDetails {
+  margin-left: auto;
+}
+
+.Header__CityName {
+  font-weight: 500;
+}
+
+.Header__Location {
+  font-weight: 100;
+  font-size: 11px;
+}
+
+
+
+
+.container {
+  margin-top: 58px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+}
+
+
+.leftSide {
+  background-color: rgb(250, 250, 250);
+  width: 320px;
+  height: calc(100vh - 58px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 5px 0px;
+  transition: all 0.15s ease-in-out 0s;
+}
+
+.placesTypes {
+  font-size: 17px;
+  font-weight: 500;
+  position: relative;
+  border-bottom: 1px solid rgb(230, 230, 230);
+  padding: 18px 20px;
+  color: #242424;
+}
+
+.typesLists {}
+
+.typesLists li {
+  position: relative;
+  font-size: 14px;
+  border-bottom: #eeedee 1px solid;
+  cursor: pointer;
+  border-right: 2px solid transparent;
+  padding: 10px 10px 10px 20px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+
+.typesLists li:hover {
+  background-color: #fff;
+  border-color: rgba(3,27,78,.1);
+  box-shadow: 0 2px 4px rgba(3,27,78,.06);
+  position: relative;
+  transform: scale(1.05);
+  z-index: 11;
+}
+
+.typesLists li.isActive {
+  background: #fff3eb;
+  border-right-color: #ff6d00;
+  color: #242424;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.iconDisplay {
+  min-width: 24px;
+  display: inline-block;
+}
+
+.map {
+  display: none;
+}
+
+
+.RightArea {
+  width: calc(100% - 320px);
+  padding: 20px;
+}
+
+.MainContainer {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
+  background: rgb(255, 255, 255);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  height: calc(100vh - 78px);
+}
+
+.PlacesLists {
+  width: 100%;
+  padding: 20px;
+  height: calc(100vh - 78px);
+  overflow-y: auto;
+}
+
+.PlaceBox {
+  background-color: #fff;
+  padding: 15px;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1%;
+  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+  -o-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  width: 31%;
+  display: inline-flex;
+}
+
+.PlaceBox:hover {
+  color: #4a4a4a;
+  position: relative;
+  transform: scale(1.05);
+  z-index: 11;
+}
+
+.PlaceBox:last-child {
+  margin-bottom: 0;
+}
+
+.PlaceBox__Content {
+  padding: 10px;
+}
+
+.PlaceBox__Title {
+  font-size: 18px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.PlaceBox__Address {
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.PlaceBox__Dist {
+  font-size: 12px;
+}

@@ -1,0 +1,68 @@
+import { getLocation } from './GeoLocation';
+
+export const createModel = update => {
+  const acceptors = {
+    getUserLocation: () => getLocation().then( ( { coords: {latitude, longitude} } ) => {
+      fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}`)
+      .then(response => response.json())
+      .then(contents => {
+        let index = 0;
+        const address = contents.results[0].address_components.reduce((str, ar) => {
+          switch (ar.types[0]) {
+            case 'locality':
+            case 'administrative_area_level_2':
+            case 'administrative_area_level_1':
+            case 'country':
+            case 'postal_code':
+              str = (index > 0) ? `${str}, ${ar.long_name}` : `${ar.long_name}`; 
+              index++;
+              break;
+            default:
+              break;
+
+          }
+          return str.trim();
+        }, '')
+        update(model => {
+          model.lat = latitude;
+          model.lng = longitude;
+          model.address = address;
+          return model;
+        })
+      })
+      .catch(() => console.log("Can’t access url response. Blocked by browser?"));
+    }),
+
+    onMapReady: ( { mapProps, map } ) => {
+      const { google } = mapProps;
+      getLocation().then( ( { coords: {latitude, longitude} } ) => {
+        const request = {
+          location: {
+            lat: latitude,
+            lng: longitude
+          },
+          radius: '1500',
+          type: ['atm','airport','bank','bus_station','hospital','local_government_office','pharmacy','train_station']
+        };
+
+        const service = new google.maps.places.PlacesService(map);
+    
+        service.nearbySearch(request, (results, status) => {
+          if (status === google.maps.places.PlacesServiceStatus.OK)
+            update(model => {
+              model = results;
+              return model;
+            });
+        });
+      });
+    }
+  };
+
+  return {
+    present: proposal => {
+      const key = Object.keys(proposal)[0];
+      const value = proposal[key];
+      acceptors[key](value);
+    }
+  };
+};

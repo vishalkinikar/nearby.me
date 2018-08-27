@@ -1,0 +1,1 @@
+export const state = model => Object.assign({}, model);
