@@ -19,7 +19,6 @@ export const createModel = update => {
               break;
             default:
               break;
-
           }
           return str.trim();
         }, '')
@@ -34,28 +33,33 @@ export const createModel = update => {
     }),
 
     onMapReady: ( { mapProps, map } ) => {
-      const { google } = mapProps;
       getLocation().then( ( { coords: {latitude, longitude} } ) => {
-        const request = {
-          location: {
-            lat: latitude,
-            lng: longitude
-          },
-          radius: '1500',
-          type: ['atm','airport','bank','bus_station','hospital','local_government_office','pharmacy','train_station']
-        };
+        acceptors.searchNearby(mapProps, map, latitude, longitude)('atm');
+      });
+    },
 
-        const service = new google.maps.places.PlacesService(map);
-    
-        service.nearbySearch(request, (results, status) => {
-          if (status === google.maps.places.PlacesServiceStatus.OK)
-            update(model => {
-              model = results;
-              return model;
-            });
-        });
+    searchNearby: ( mapProps, map, latitude, longitude ) => ( types ) => {
+      const { google } = mapProps;
+      const request = {
+        location: {
+          lat: latitude,
+          lng: longitude
+        },
+        radius: '1500',
+        type: types
+      };
+
+      const service = new google.maps.places.PlacesService(map);
+  
+      service.nearbySearch(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK)
+          update(model => {
+            model = results;
+            return model;
+          });
       });
     }
+
   };
 
   return {
