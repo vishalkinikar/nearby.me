@@ -60,7 +60,7 @@ export const createModel = update => {
           });
         }else{
           update(model => {
-            model = {status};
+            model = {status, types};
             return model;
           });
         }

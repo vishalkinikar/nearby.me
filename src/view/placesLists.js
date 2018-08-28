@@ -16,9 +16,7 @@ export const placesListsView = actions => {
       </Map>
       {
         (model.status) ?
-          <article className="PlaceBox">
-            <div>{model.status}</div>
-          </article>
+          (model.status === 'ZERO_RESULTS' ) ? <div className="DefaultMsgDiv">'{model.types[0]}' not found in your current location!</div> : <div className="ErrorDiv">Error: {model.status}</div>
           :
           (model) ? Object.keys(model).map((placeID, index) => 
             <article className="PlaceBox" key={index}>

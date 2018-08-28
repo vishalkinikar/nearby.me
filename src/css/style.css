@@ -197,18 +197,13 @@ table {
 .MainContainer {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
   background: rgb(255, 255, 255);
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
   height: calc(100vh - 78px);
 }
 
 .PlacesLists {
   width: 100%;
   padding: 20px;
-  height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
   overflow-y: auto;
   display: -webkit-box;
   display: -moz-box;
@@ -237,10 +232,6 @@ table {
   color: #4a4a4a;
   transform: scale(1.05);
   z-index: 11;
-}
-
-.PlaceBox:last-child {
-  margin-bottom: 0;
 }
 
 .PlaceBoxWarp {
@@ -284,4 +275,29 @@ table {
 
 .PlaceBox__FooterText {
   margin-right: auto;
+}
+
+.ErrorDiv {
+  width: 100%;
+  background-color: rgb(255, 242, 240);
+  color: rgb(251, 67, 74);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 20px -5px;
+  z-index: 1010;
+  line-height: 25px;
+  padding: 8px 15px;
+  border-width: 0px 0px 0px 4px;
+  border-image: initial;
+  border-left: 4px solid rgb(251, 67, 74);
+}
+.DefaultMsgDiv {
+  width: 100%;
+  background-color: rgb(237, 237, 237);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 20px -5px;
+  z-index: 1010;
+  line-height: 25px;
+  padding: 8px 15px;
+  border-width: 0px 0px 0px 4px;
+  border-image: initial;
+  border-left: 4px solid rgb(121, 121, 121);
+  color: black;
 }
