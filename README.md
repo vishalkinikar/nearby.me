@@ -18,3 +18,7 @@ I will use the following tools:
 - Clone the repo
 - cd nearby.me
 - run npm install && npm start
+- open http://localhost:3000 in your browser
+
+
+<a href="https://vishalkinikar.github.io/nearby.me/">View Demo</a>
