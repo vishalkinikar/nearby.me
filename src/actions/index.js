@@ -3,4 +3,5 @@ export const createActions = Model => ({
   onMapReady: (mapProps, map) => Model.present({ onMapReady: { mapProps, map } }),
   searchNearby: types => Model.present({ searchNearby: types }),
   activeLeftLink: name => Model.present({ activeLeftLink: name }),
+  showHideLeftNav: () => Model.present({ showHideLeftNav: true }),
 });

@@ -33,7 +33,9 @@ export const placesListsView = actions => {
               </div>
               <div className="PlaceBox__Footer">
                   <div className="PlaceBox__FooterText">
-                    {model[placeID].opening_hours && model[placeID].opening_hours.open_now ? 'Open right now' : 'Closed'}
+                    {
+                      model[placeID].opening_hours ? model[placeID].opening_hours.open_now ? 'Open right now' : 'Closed' : ''
+                    }
                 </div>
                 <StarRatingComponent 
                     name={model[placeID].id} 

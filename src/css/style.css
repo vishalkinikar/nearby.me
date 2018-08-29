@@ -301,3 +301,74 @@ table {
   border-left: 4px solid rgb(121, 121, 121);
   color: black;
 }
+
+.MenuIcon {
+  font-size: 22px;
+  margin-right: 20px;
+  color: #272727;
+  display: none;
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 1024px) {
+  
+  .MenuIcon {
+    display: block;
+  }
+
+  .leftSide {
+    position: fixed;
+    top: 61px;
+    z-index: 8;
+    width: 260px;
+    margin-left: -300px;
+  }
+
+  .isMenuActive.leftSide {
+    margin-left: 0;
+  }
+
+  .RightArea {
+    width: 100%;
+  }
+
+  .PlaceBox {
+    width: 47.903943%;
+  }
+  
+}
+
+@media (max-width: 768px) {
+
+  .PlaceBox {
+    width: 99.903943%;
+  }
+  
+}
+
+@media (max-width: 640px) {
+
+  .Header__Title {
+    display: none;
+  }
+  
+  .PlaceBox {
+    width: 99.903943%;
+    margin-bottom: 15px;
+  }
+
+  .Header__Location {
+    font-size: 8px;
+  }
+
+  .Header__CityName {
+    font-size: 11px;
+  }
+
+  .RightArea, .PlacesLists {
+    padding: 10px;
+  }
+  
+}

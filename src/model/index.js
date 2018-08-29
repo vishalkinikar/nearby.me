@@ -69,8 +69,15 @@ export const createModel = update => {
 
     activeLeftLink: name => {
       update(model => {
-        Object.keys(model).map(type => model[type].isActive = model[type].isActive ? false : false);
+        Object.keys(model).map(type => (type !== 'isActiveLeftNav') ? model[type].isActive = model[type].isActive ? false : false : false);
         model[name].isActive = true;
+        return model;
+      });
+    },
+
+    showHideLeftNav: () => {
+      update(model => {
+        model.isActiveLeftNav = model.isActiveLeftNav ? false : true
         return model;
       });
     }

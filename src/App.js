@@ -14,13 +14,10 @@ const CreateAppView = update => {
   );
 
   const view = model => (
-    <div className='mainDiv'>
+    <div className="mainDiv">
       {header.view(model)}
       <div className="container">
-        <div className="leftSide">
-          <h2 className="placesTypes">Types</h2>
-          {typesLists.view(model)}
-        </div>
+        {typesLists.view(model)}
         <div className="RightArea">
           <div className="MainContainer">
             {placesLists.view(model)}

@@ -19,6 +19,8 @@ const modelData = types.reduce((obj, type, index) => {
   });
 }, {});
 
+modelData.isActiveLeftNav = false;
+
 export const typesLists = update => ({
   model: () => (modelData),
 
