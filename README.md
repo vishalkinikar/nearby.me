@@ -5,7 +5,7 @@ Created a small application to fetch users location and show him nearby banks, A
 
 ## Stack
 
-I will use the following tools:
+I have used the following tools:
 
  - [React.js](https://reactjs.org/) as Javascript frontend framework
  - [Meiosis](http://meiosis.js.org/) as state Management for Web Applications
